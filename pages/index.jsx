@@ -8,12 +8,18 @@ const Home = () => {
   let left = [];
   let split = splitGrid(nono, nono[0]);
 
-  //fill in cells
-  for (let i = 0; i < nono[0] * nono[0]; i++) {
-    if (nono[i + 1] != 0)
-      cells.push(<div key={i + 1} className="h-full bg-black "></div>);
-    if (nono[i + 1] === 0)
-      cells.push(<div key={i + 1} className="h-full  bg-white "></div>);
+  //fill in completed cells
+  // for (let i = 0; i < nono[0] * nono[0]; i++) {
+  //   if (nono[i + 1] != 0)
+  //     cells.push(<div key={i + 1} className="h-full bg-black "></div>);
+  //   if (nono[i + 1] === 0)
+  //     cells.push(<div key={i + 1} className="h-full  bg-white "></div>);
+  // }
+
+  for (let y = 0; y < split.length; y++) {
+    for (let x = 0; x < split[y].length; x++) {
+      cells.push(<GameTile x={x} y={y}></GameTile>);
+    }
   }
 
   function colAnswer(col) {
